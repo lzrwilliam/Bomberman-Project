@@ -24,7 +24,7 @@ The game ends in the following situations: * The time has expired, * The remaini
 <details>
 <summary>Navigating through the menu</summary>
 Entering in every option from the menu is made by pressing the joystick button on the desired one. To exit from an option, without saving any changes in the main menu options, the button on the breadbord can be pressed.
-We already covered the functionality of Start Game and Choose player option.
+We already covered the functionality of Start Game and Choose player option. To be noticed, that in the left and right side of the LCD, arrows are displayed to indicate the directions where we can scroll to choose an item.
 The Highscore option displays the top 3 scores saved in the memory alongside with the name of the players that achieved it. 
 The about and how to play options will display informations about the game developer and basic instructions for new users in order to be able to play the bomberman game. The user can scroll through messages displayed using the joystick.
 If the settings option is selected, there will be multiple sub-menu items : 
