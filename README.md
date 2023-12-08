@@ -64,3 +64,8 @@ Let's dive more into the details of the gameplay and other menu functionalities.
   - **A Buzzer**: Adds auditory feedback during gameplay and menu navigation.
   - **LCD 16x2**: The interface for all in-game messages, settings adjustments, and gameplay interactions.
 </details>
+
+The functionality of the project can be seen in the follwing videos:
+[Part1](https://www.youtube.com/watch?v=FSDpvKRa8Io)
+[Part2]()
+[Part3]()
