@@ -1,67 +1,64 @@
 # Bomberman
 
-**Game Description**
+## Game Description
 
-Welcome to my project: a recreation of the classic game Bomberman, reimagined for the Arduino platform with an 8x8 LED matrix display. This endeavor began as a fusion of nostalgia and innovation, driven by my fond memories of playing Bomberman during my childhood and my passion for electronics and programming. Building this game on an Arduino with an LED matrix presented unique challenges and learning opportunities, making it an irresistible project for me.
-The purpose of the game is to destroy as many objects as possible by placing bombs close to them. The game becomes harder with each level by making the bombs explode faster, increasing the frequency of object movements, and reducing the time to destroy everything. The map with walls and objects is randomly generated every time, whether it is a new level or if the game has restarted, and the player is spawned randomly as well.
+Welcome to the reimagined world of **Bomberman**, a classic favorite, now ingeniously adapted for the Arduino platform with a vivid 8x8 LED matrix display. This project is a delightful fusion of nostalgia and modern technology, inspired by the cherished gaming memories from my childhood. Bringing Bomberman to life on the Arduino platform presented a unique blend of challenges and learning experiences, combining electronics and programming in a creative and educational journey.
 
-**Instructions for Playing**
+The essence of the game is to strategically place bombs to destroy as many objects as possible. Each new level increases the game's complexity by accelerating the bomb detonation time, enhancing the movement frequency of objects, and reducing the time available to clear the level. The game's environment, comprising randomly generated maps with walls and objects, adds an element of unpredictability, with the player's spawn point also varying randomly.
 
-Firstly, when the game is powered on, a welcome message appears on the LCD screen. After this message, the game menu is displayed alongside possible options, the first one being "Start Game". The other main menu options are: Start Game, HighScore, Settings, Choose Player, About, and How to Play. 
+## Instructions for Playing
 
-When booting the program for the first time, there are no created players, nor saved high scores; it is completely plain. To be able to play the game by selecting the first menu option, "Start Game," a player must be chosen. If the user tries to play the game without having a user chosen, an LCD message stating that a player must be chosen to play will appear, and the user will be taken back to the main menu.
+Upon powering on the game, a warm welcome message greets you on the LCD screen. Following this, the game menu presents several options, with "Start Game" being the first. The main menu options include: Start Game, HighScore, Settings, Choose Player, About, and How to Play.
 
-There are two options for a user if they have not selected a player: 
-1. Navigate through the main menu to the "Choose a Player" section, where existing players can be selected by scrolling with the joystick, if players exist.
-2. If there are no created players, the user can create a new one, and it will become the current player. To create a player, navigate to Settings > SetName, enter the name character by character by choosing it from the alphabet by moving the joystick horizontally, and confirm the letter at a position with a short press of the joystick button. To modify the name, the joystick can be moved vertically up or down to navigate through the name positions. After obtaining the desired name, hold the joystick for about 4-5 seconds, and a message confirming player creation will be displayed on the LCD.
+For first-time players, the experience begins as a blank canvas. There are no pre-created players or saved high scores. To dive into the "Start Game" option, you must first select a player. If you attempt to start the game without selecting a player, a prompt will remind you to choose one, redirecting you back to the main menu.
 
-Now that we have explained the basic requirements to start the game, let's get more into the details about the rest of the menu items and functionalities.
+If you haven't selected a player, you have two paths:
+1. **Choose a Player**: Navigate to this menu option and scroll through existing players using the joystick (if any are available).
+2. **Create a Player**: In the absence of existing players, create a new one under Settings > SetName. Enter the name character-by-character, selecting each letter from the alphabet using the joystick. A short press of the joystick button confirms each letter. For name adjustments, move the joystick vertically. Finalize your new player by holding down the joystick for about 4-5 seconds, upon which a confirmation message will appear on the LCD.
+
+Let's delve into the details of the gameplay and other menu functionalities.
 
 <details>
-  <summary>While Playing</summary>
- <br> 
-  In the playing mode, the LCD screen always displays the following information: Current level, Remaining lives, Time left, Score, and the Player name. On the LED Matrix, the player is indicated by the fastest blinking position, the objects by the cells that blink very slowly, and the indestructible walls by non-blinking cells. The player can move anywhere he desires with the help of the joystick, except the occupied cells, if there is a possible path.
+  <summary><strong>While Playing</strong></summary>
 
-  To place a bomb at the current position, press the joystick button. If a bomb has been placed, a sound can be heard, and the cell blinking rapidly can be observed. The player must be careful because only one bomb at a time per cell is allowed, and also, if they are in the range of the bomb (1 cell up/down/left/right), they will lose a life.
+  In gameplay mode, the LCD screen continuously displays key information: Current Level, Remaining Lives, Time Left, Score, and Player Name. The LED Matrix brings the game to life: the player is indicated by the fastest blinking light, objects by slower blinking cells, and indestructible walls by static cells. Navigate freely across the matrix with the joystick, avoiding occupied cells and finding your path.
 
-  The game ends in the following situations: The time has expired, or the remaining lives are 0. In both of these cases, a message on the LCD informs the player about their score and level. If the score becomes one of the top three high scores, the player is informed about their current position in the high scores table. The same messages are displayed when the user advances to a new level after destroying all existing destructible objects, and the game difficulty increases slightly. To exit the game and return to the main menu, press the button on the Arduino breadboard.
+  To deploy a bomb at your current location, simply press the joystick button. A distinct sound and rapid blinking on the cell indicate a bomb placement. Be cautious: only one bomb per cell is permitted, and being within the bomb's range (one cell in any direction) will cost you a life.
+
+  The game concludes under two circumstances: when the time runs out or when no lives remain. In either case, a message will display your score and level on the LCD. If your score ranks within the top three high scores, you'll be notified of your position on the leaderboard. A similar message appears upon advancing to a new level after clearing all destructible objects, with each new level bringing a slight increase in difficulty. To exit the game and return to the main menu, press the button on the Arduino breadboard.
 </details>
 
 <details>
-  <summary>Navigating through the Menu</summary>
-  <br> 
+  <summary><strong>Navigating through the Menu</strong></summary>
 
-  Entering any option from the menu is made by pressing the joystick button on the desired one. To exit from an option without saving any changes in the main menu options, press the button on the breadboard.
+  To explore menu options, press the joystick button on your desired selection. To exit without saving any changes in the main menu, simply press the breadboard button.
 
-  We already covered the functionality of Start Game and Choose Player options. It is to be noted that arrows are displayed on the left and right side of the LCD to indicate the directions where we can scroll to choose an item.
+  We've already explored the functionalities of "Start Game" and "Choose Player." Note that arrows are displayed on the LCD's left and right sides to indicate scrollable directions.
 
-  The Highscore option displays the top 3 scores saved in the memory alongside the names of the players who achieved them. 
+  The "Highscore" option showcases the top 3 scores, complete with the players' names who achieved them. 
 
-  The About and How to Play options display information about the game developer and basic instructions for new users to be able to play the Bomberman game. The user can scroll through messages displayed using the joystick.
+  The "About" and "How to Play" sections offer insights into the game's development and essential playing instructions. Use the joystick to navigate through these informative messages.
 
-  If the Settings option is selected, there are multiple sub-menu items: 
-  - **Set Name**: Create a new user or change the name of an existing one.
-  - **Set LCD Brightness**: Adjust the LCD brightness using the joystick and confirm the value with the breadboard button.
-  - **Set Matrix Brightness**: Choose the LED matrix brightness. Two LEDs will be turned on the matrix with the real-time brightness value. Use the breadboard button to confirm and exit.
-  - **Sounds**: Enable or disable sounds when navigating through the menu. Hold the joystick button for a few seconds to toggle and use the breadboard button to save and exit.
-  - **Delete All Players**: Erase all players and high scores from memory.
-  - **Reset Highscores**: Delete all high scores of existing players.
-  - **Back**: Return to the main menu options.
+  Under the "Settings" option, you'll find several sub-menu items:
+  - **Set Name**: Create a new user or alter the name of an existing one.
+  - **Set LCD Brightness**: Adjust the LCD's brightness and confirm your setting with the breadboard button.
+  - **Set Matrix Brightness**: Customize the LED matrix brightness. For a real-time reference, two LEDs on the matrix will reflect your chosen brightness level. Confirm and exit using the breadboard button.
+  - **Sounds**: Toggle sound effects during menu navigation and gameplay. Hold the joystick button for a few seconds to toggle and use the breadboard button to save and exit.
+  - **Delete All Players**: This option erases all players and high scores from memory.
+  - **Reset Highscores**: Clears all high scores from existing players.
+  - **Back**: Return to the primary menu options.
 </details>
 
 <details>
-  <summary>Used and Required Components</summary>
-  <br>
-  The basic components required to realize this game are:
-  <br><br>
+  <summary><strong>Used and Required Components</strong></summary>
 
-  - **Arduino Uno**: The central processing unit of the game.
-  - **A Joystick**: Used for moving the player on the map and navigating in the menu section.
-  - **8x8 LED Matrix**: Serves as the game map.
-  - **MAX7219 Display Driver**: To control the LED Matrix.
-  - **Capacitors**: For managing power supply and signals.
-  - **A Buzzer**: Generates sounds during menu navigations or when a player loses a life.
-  - **LCD 16x2**: Displays all messages and is interacted with by the user to play the game and make desired changes.
+  To bring this game to life, the following components are essential:
+  
+  - **Arduino Uno**: The heart of the game, managing all the processing.
+  - **A Joystick**: For player movement and menu navigation.
+  - **8x8 LED Matrix**: The dynamic game map.
+  - **MAX7219 Display Driver**: Controls the LED Matrix with ease.
+  - **Capacitors**: Essential for stabilizing power supply and signal integrity.
+  - **A Buzzer**: Adds auditory feedback during gameplay and menu navigation.
+  - **LCD 16x2**: The interface for all in-game messages, settings adjustments, and gameplay interactions.
 </details>
-
-
