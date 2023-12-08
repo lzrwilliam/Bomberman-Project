@@ -67,5 +67,11 @@ Let's dive more into the details of the gameplay and other menu functionalities.
 
 The functionality of the project can be seen in the following videos:
 [Part1](https://www.youtube.com/watch?v=FSDpvKRa8Io)
-[Part2]()
-[Part3]()
+[Part2](https://www.youtube.com/watch?v=4oR_PaptcEU)
+[Part3](https://www.youtube.com/watch?v=Bqj9n7G40Pg)
+
+Picture of the hardware setup:
+
+![WhatsApp Image 2023-12-08 at 03 41 09](https://github.com/lzrwilliam/Bomberman-Project/assets/92024459/b7f6088c-54db-4d67-8276-8ee2ec5fff4e)
+
+
