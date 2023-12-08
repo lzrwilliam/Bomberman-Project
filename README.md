@@ -2,7 +2,8 @@
 
 **Game Description**
 
-This project simulates the popular game known as Bomberman by using an 8x8 LED Matrix on the Arduino platform. The purpose of the game is to destroy as many objects as possible by placing bombs close to them. The game becomes harder with each level by making the bombs explode faster, increasing the frequency of object movements, and reducing the time to destroy everything. The map with walls and objects is randomly generated every time, whether it is a new level or if the game has restarted, and the player is spawned randomly as well.
+Welcome to my project: a recreation of the classic game Bomberman, reimagined for the Arduino platform with an 8x8 LED matrix display. This endeavor began as a fusion of nostalgia and innovation, driven by my fond memories of playing Bomberman during my childhood and my passion for electronics and programming. Building this game on an Arduino with an LED matrix presented unique challenges and learning opportunities, making it an irresistible project for me.
+The purpose of the game is to destroy as many objects as possible by placing bombs close to them. The game becomes harder with each level by making the bombs explode faster, increasing the frequency of object movements, and reducing the time to destroy everything. The map with walls and objects is randomly generated every time, whether it is a new level or if the game has restarted, and the player is spawned randomly as well.
 
 **Instructions for Playing**
 
@@ -47,3 +48,20 @@ Now that we have explained the basic requirements to start the game, let's get m
   - **Reset Highscores**: Delete all high scores of existing players.
   - **Back**: Return to the main menu options.
 </details>
+
+<details>
+  <summary>Used and Required Components</summary>
+  <br>
+  The basic components required to realize this game are:
+  <br><br>
+
+  - **Arduino Uno**: The central processing unit of the game.
+  - **A Joystick**: Used for moving the player on the map and navigating in the menu section.
+  - **8x8 LED Matrix**: Serves as the game map.
+  - **MAX7219 Display Driver**: To control the LED Matrix.
+  - **Capacitors**: For managing power supply and signals.
+  - **A Buzzer**: Generates sounds during menu navigations or when a player loses a life.
+  - **LCD 16x2**: Displays all messages and is interacted with by the user to play the game and make desired changes.
+</details>
+
+
