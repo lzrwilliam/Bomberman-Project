@@ -16,7 +16,7 @@ If you haven't selected a player, you have two paths:
 1. **Choose a Player**: Navigate to this menu option and scroll through existing players using the joystick (if any are available).
 2. **Create a Player**: In the absence of existing players, create a new one under Settings > SetName. Enter the name character-by-character, selecting each letter from the alphabet using the joystick. A short press of the joystick button confirms each letter. For name adjustments, move the joystick vertically. Finalize your new player by holding down the joystick for about 4-5 seconds, upon which a confirmation message will appear on the LCD.
 
-Let's delve into the details of the gameplay and other menu functionalities.
+Let's dive more into the details of the gameplay and other menu functionalities.
 
 <details>
   <summary><strong>While Playing</strong></summary>
