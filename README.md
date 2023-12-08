@@ -47,6 +47,8 @@ Let's delve into the details of the gameplay and other menu functionalities.
   - **Delete All Players**: This option erases all players and high scores from memory.
   - **Reset Highscores**: Clears all high scores from existing players.
   - **Back**: Return to the primary menu options.
+
+    **I noticed the following bug: if we enter in the settings menu and exit from it, second time we want to enter in it, we cannot**.
 </details>
 
 <details>
