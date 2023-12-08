@@ -113,7 +113,7 @@ struct Player {
 };
 
 int numPlayers = 0;  //  number of currently total players
-const int maxPlayers = 5;
+const int maxPlayers = 3;
 const int playerSize = sizeof(Player);
 Player players[maxPlayers];
 
@@ -302,7 +302,7 @@ int lastJoystickButtonState = HIGH;
 int level = 1;
 int lives = 1;
 unsigned long levelStartTime;
-unsigned long levelTime = 30000;
+unsigned long levelTime = 300000;
 unsigned long timeLeft = 0;
 
 unsigned long lastWallMoveTime = 0;
@@ -1449,7 +1449,7 @@ void updateHighScores(int newScore) {
   saveHighScores();
 
   if (isNewHighScore) {
-    char positionBuffer[13];
+    char positionBuffer[33];
     snprintf(positionBuffer, sizeof(positionBuffer), "%d position", newHighScorePosition + 1);
 
     scrollLCDMessage(highscoreMessagePart1, 1, nullptr, nullptr, 0, true);
