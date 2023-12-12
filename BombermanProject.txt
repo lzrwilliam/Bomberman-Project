@@ -199,26 +199,26 @@ byte heart[8] = {
   0b00100,
   0b00000
 };
-byte arrowLeft[8] = {
-  0b00000,
-  0b00010,
-  0b00001,
-  0b11111,
-  0b00001,
-  0b00010,
-  0b00000,
-  0b00000
+byte arrowDown[8] = {
+  0b00100,
+  0b01110,
+  0b10101,
+  0b00100,
+  0b00100,
+  0b00100,
+  0b00100,
+  0b00100
 };
 
-byte arrowRight[8] = {
-  0b00000,
-  0b01000,
-  0b10000,
-  0b11111,
-  0b10000,
-  0b01000,
-  0b00000,
-  0b00000
+byte arrowUp[8] = {
+  0b00100,
+  0b00100,
+  0b00100,
+  0b00100,
+  0b00100,
+  0b10101,
+  0b01110,
+  0b00100
 };
 
 byte settingsIcon[8] = {
@@ -404,11 +404,11 @@ void scrollLCDMessage(const char* message, int line, int* currentMessage = nullp
 
       if (millis() - *lastJoystickTime > 500) {  // joystick debounce
         int yRead = analogRead(yPin);
-        if (yRead< minThreshold&& * currentMessage > 0) {
+        if (yRead > maxThreshold && *currentMessage > 0) {
           (*currentMessage)--;
           *lastJoystickTime = millis();
           return;  //exit scroll to print a message behind
-        } else if (yRead > maxThreshold && *currentMessage < totalMessagescount - 1) {
+        } else if (yRead < minThreshold && *currentMessage < totalMessagescount - 1) {
           (*currentMessage)++;
           *lastJoystickTime = millis();
           return;  // //exit scroll to print a message forward
@@ -446,8 +446,8 @@ void setup() {
   BombsSetToFalse();
   levelStartTime = millis();
   lcd.createChar(0, heart);
-  lcd.createChar(1, arrowLeft);
-  lcd.createChar(2, arrowRight);
+  lcd.createChar(1, arrowUp);
+  lcd.createChar(2, arrowDown);
   loadHighScores();
   messageCompleted = false;
 
@@ -1027,21 +1027,21 @@ void enterName() {
 
     // navigate letter with debounce
     if (currentMillis - lastJoystickMove > joystickMoveInterval) {
-      if (yRead < minThreshold && alphabetIndex > 0) {
+      if (yRead > maxThreshold && alphabetIndex > 0) {
         alphabetIndex--;
         isEditing = true;
         lastJoystickMove = currentMillis;
-      } else if (yRead > maxThreshold && alphabetIndex < alphabet.length() - 1) {
+      } else if (yRead < minThreshold && alphabetIndex < alphabet.length() - 1) {
         alphabetIndex++;
         isEditing = true;
         lastJoystickMove = currentMillis;
       }
 
-      if (xRead < minThreshold && currentLetterIndex > 0) {
+      if (xRead > maxThreshold && currentLetterIndex > 0) {
         currentLetterIndex--;
         isEditing = currentLetterIndex < playerName.length();
         lastJoystickMove = currentMillis;
-      } else if (xRead > maxThreshold && currentLetterIndex < playerName.length()) {
+      } else if (xRead < minThreshold && currentLetterIndex < playerName.length()) {
         currentLetterIndex++;
         isEditing = currentLetterIndex < playerName.length();
         lastJoystickMove = currentMillis;
@@ -1163,11 +1163,11 @@ void navigatePlayerSelection() {
     }
     // joystick debounce
     if (currentMillis - lastNavTime > navDelay) {
-      if (yRead < minThreshold && currentPlayerIndex > 0) {
+      if (yRead > maxThreshold && currentPlayerIndex > 0) {
         currentPlayerIndex--;
         showPlayers();
         lastNavTime = currentMillis;
-      } else if (yRead > maxThreshold && currentPlayerIndex < numPlayers - 1) {
+      } else if (yRead < minThreshold && currentPlayerIndex < numPlayers - 1) {
         currentPlayerIndex++;
         showPlayers();
         lastNavTime = currentMillis;
@@ -1245,9 +1245,9 @@ void adjustLCDBrightness() {
     unsigned long currentMillis = millis();
     if (currentMillis - lastAdjustTime > adjustInterval) {
       if (yRead < 300) {
-        brightness = max(0, brightness - 10);
-      } else if (yRead > 700) {
         brightness = min(255, brightness + 10);
+      } else if (yRead > 700) {
+        brightness = max(0, brightness - 10);
       }
       lastAdjustTime = currentMillis;
     }
@@ -1300,9 +1300,9 @@ void adjustMatrixBrightness() {
     yRead = analogRead(yPin);
     if (currentMillis - lastAdjustTime > adjustInterval) {
       if (yRead < 300) {
-        matrixBrightness = max(0, matrixBrightness - 1);  // increase brightness
+        matrixBrightness = min(15, matrixBrightness + 1);  // increase brightness
       } else if (yRead > 700) {
-        matrixBrightness = min(15, matrixBrightness + 1);  // decrease
+        matrixBrightness = max(0, matrixBrightness - 1);  // decrease
       }
       lc.setIntensity(0, matrixBrightness);
       lastAdjustTime = currentMillis;
