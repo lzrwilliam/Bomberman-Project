@@ -302,7 +302,7 @@ int lastJoystickButtonState = HIGH;
 int level = 1;
 int lives = 1;
 unsigned long levelStartTime;
-unsigned long levelTime = 300000;
+unsigned long levelTime = 30000;
 unsigned long timeLeft = 0;
 
 unsigned long lastWallMoveTime = 0;
@@ -556,23 +556,24 @@ void updatePositions() {
   byte newXPos = xPos;
   byte newYPos = yPos;
 
-  if (xValue < minThreshold && xPos > 0) {
-    if (matrix[xPos - 1][yPos] == EMPTY) {
-      newXPos = xPos - 1;
-    }
-  } else if (xValue > maxThreshold && xPos < matrixSize - 1) {
-    if (matrix[xPos + 1][yPos] == EMPTY) {
-      newXPos = xPos + 1;
-    }
-  }
 
-  if (yValue < minThreshold && yPos < matrixSize - 1) {
+  if (xValue < minThreshold && yPos > 0) {
+    if (matrix[xPos][yPos - 1] == EMPTY) {
+      newYPos = yPos - 1;
+    }
+  } else if (xValue > maxThreshold && yPos < matrixSize - 1) {
     if (matrix[xPos][yPos + 1] == EMPTY) {
       newYPos = yPos + 1;
     }
-  } else if (yValue > maxThreshold && yPos > 0) {
-    if (matrix[xPos][yPos - 1] == EMPTY) {
-      newYPos = yPos - 1;
+  }
+
+  if (yValue < minThreshold && xPos < matrixSize - 1) {
+    if (matrix[xPos + 1][yPos] == EMPTY) {
+      newXPos = xPos + 1;
+    }
+  } else if (yValue > maxThreshold && xPos > 0) {
+    if (matrix[xPos - 1][yPos] == EMPTY) {
+      newXPos = xPos - 1;
     }
   }
 
