@@ -134,7 +134,7 @@ const unsigned long displayChangeInterval = 5000;  // used for alternating betwe
 bool displayingPlayerName = false;
 
 const int settingsItems = 7;
-int currentSettingsItem = -1;
+int currentSettingsItem = 0;
 String settingsMenu[settingsItems] = { "Set Name", "Set LCD Brightness", "Set Matrix Brightness", "Sounds", "Delete Players", "Reset Highscores", "Back" };
 
 //-------------LCD, JOYSTICK AND MATRIX-----------------------------//
@@ -936,11 +936,19 @@ void displaySettingsMenu() {
 void navigateSettingsMenu() {
   backSelected = false;
   unsigned long lastNavTime = 0;
-  const unsigned long navInterval = 200;
+      bool waitForRelease = true;
+  const unsigned long navInterval = 400;
 
   while (!backSelected) {
     int yRead = analogRead(yPin);
     unsigned long currentMillis = millis();
+    if (waitForRelease) {
+            if (digitalRead(swPin) == HIGH) {
+                waitForRelease = false;
+            } else {
+                continue; 
+            }
+        }
 
 
     if (currentMillis - lastNavTime > navInterval) {
@@ -967,6 +975,8 @@ void navigateSettingsMenu() {
     }
 
     if (backSelected) {
+      backSelected=false;
+  
       break;
     }
   }
@@ -1288,6 +1298,7 @@ void adjustMatrixBrightness() {
   bool isButtonPressed = false;
   const unsigned long refreshInterval = 200;
   unsigned long lastRefreshTime = 0;
+  turnLedsOff();
   while (true) {
     unsigned long currentMillis = millis();
     if (currentMillis - lastRefreshTime > refreshInterval) {
@@ -1328,6 +1339,8 @@ void adjustMatrixBrightness() {
     }
     if (digitalRead(exitGameButtonPin) == LOW) {
       turnLedsOff();
+      displayOnMatrix(settingsIcon);
+
       return;
     }
   }
@@ -1338,7 +1351,7 @@ void manageSounds() {
   bool isButtonPressed = false;
   unsigned long lastRefreshTime = 0;
   const unsigned long refreshInterval = 200;
-  const unsigned long buttonDelay = 500;
+  const unsigned long buttonDelay = 200;
   while (true) {
     unsigned long currentMillis = millis();
 
@@ -1358,7 +1371,7 @@ void manageSounds() {
 
     if (joystickButtonState == HIGH && isButtonPressed) {
       if (currentMillis - buttonPressStartTime > buttonDelay) {
-        // if button has been short pressed , sounds var toggle
+        // if button has been short pressed  sounds variable changes
         soundsEnabled = !soundsEnabled;
         EEPROM.update(eepromSoundsAddress, soundsEnabled);
       }
