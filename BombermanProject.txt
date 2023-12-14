@@ -355,8 +355,8 @@ void loadEeprom() {
     EEPROM.get(playersStartAddress + i * playerSize, players[i]);
   }
 
-  // EEPROM.get(eepromLastPlayerIndex, currentPlayer);
-  // EEPROM.get(eepromLastPlayerIndex, selectedPlayerIndex);
+   //EEPROM.get(eepromLastPlayerIndex, currentPlayer);
+   //EEPROM.get(eepromLastPlayerIndex, selectedPlayerIndex);
 }
 
 void setLCDBrightness(int brightness) {
@@ -498,6 +498,15 @@ void playGame() {
   }
 
   if (areAllDestructibleWallsDestroyed()) {
+    char messageFragment[25];
+  snprintf(messageFragment, sizeof(messageFragment), "Congrats for finishing");
+  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
+
+  snprintf(messageFragment, sizeof(messageFragment), "level %d", level);
+  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
+
+  snprintf(messageFragment, sizeof(messageFragment), "with score of %d", numarPeretiDistrusi);
+  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
     advanceToNextLevel();
   }
 
@@ -777,10 +786,10 @@ bool areAllDestructibleWallsDestroyed() {
 void advanceToNextLevel() {
   level++;
   levelStartTime = millis();                   // reset time for next level
-  levelTime = max(30, 300000 - (10 * level));  // level time decrease
+  levelTime = min(300000, 300000 - (10000 * (level-1)));  // level time decrease
   initializeWalls();
   spawnPlayer();
-  bombDelay = max(1000, bombDelay - 250);               // by each level bomb explodes faster
+  bombDelay = max(400,min(1000, bombDelay - 100));               // by each level bomb explodes faster
   wallMoveInterval = max(500, wallMoveInterval - 250);  // walls moves faster with each level
   updateHighScores(numarPeretiDistrusi);
 }
