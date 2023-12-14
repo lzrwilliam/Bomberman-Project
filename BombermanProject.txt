@@ -302,7 +302,7 @@ int lastJoystickButtonState = HIGH;
 int level = 1;
 int lives = 1;
 unsigned long levelStartTime;
-unsigned long levelTime = 30000;
+unsigned long levelTime = 300000;
 unsigned long timeLeft = 0;
 
 unsigned long lastWallMoveTime = 0;
