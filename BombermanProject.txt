@@ -355,8 +355,8 @@ void loadEeprom() {
     EEPROM.get(playersStartAddress + i * playerSize, players[i]);
   }
 
-   //EEPROM.get(eepromLastPlayerIndex, currentPlayer);
-   //EEPROM.get(eepromLastPlayerIndex, selectedPlayerIndex);
+  //EEPROM.get(eepromLastPlayerIndex, currentPlayer);
+  //EEPROM.get(eepromLastPlayerIndex, selectedPlayerIndex);
 }
 
 void setLCDBrightness(int brightness) {
@@ -499,14 +499,14 @@ void playGame() {
 
   if (areAllDestructibleWallsDestroyed()) {
     char messageFragment[25];
-  snprintf(messageFragment, sizeof(messageFragment), "Congrats for finishing");
-  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
+    snprintf(messageFragment, sizeof(messageFragment), "Congrats for finishing");
+    scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
 
-  snprintf(messageFragment, sizeof(messageFragment), "level %d", level);
-  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
+    snprintf(messageFragment, sizeof(messageFragment), "level %d", level);
+    scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
 
-  snprintf(messageFragment, sizeof(messageFragment), "with score of %d", numarPeretiDistrusi);
-  scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
+    snprintf(messageFragment, sizeof(messageFragment), "with score of %d", numarPeretiDistrusi);
+    scrollLCDMessage(messageFragment, 1, nullptr, nullptr, 0, false);
     advanceToNextLevel();
   }
 
@@ -618,7 +618,7 @@ void initializeWalls() {
   // secondly, we add destructible objects
   for (int row = 0; row < matrixSize; row++) {
     for (int col = 0; col < matrixSize; col++) {
-      if (matrix[row][col] == EMPTY && random(100) < 5) {
+      if (matrix[row][col] == EMPTY && random(100) < 5 + level) {
         if (isAccessible(row, col)) {
           matrix[row][col] = DESTRUCTIBLE_WALL;
         }
@@ -785,11 +785,11 @@ bool areAllDestructibleWallsDestroyed() {
 
 void advanceToNextLevel() {
   level++;
-  levelStartTime = millis();                   // reset time for next level
-  levelTime = min(300000, 300000 - (10000 * (level-1)));  // level time decrease
+  levelStartTime = millis();                                // reset time for next level
+  levelTime = min(300000, 300000 - (10000 * (level - 1)));  // level time decrease
   initializeWalls();
   spawnPlayer();
-  bombDelay = max(400,min(1000, bombDelay - 100));               // by each level bomb explodes faster
+  bombDelay = max(400, min(1000, bombDelay - 100));     // by each level bomb explodes faster
   wallMoveInterval = max(500, wallMoveInterval - 250);  // walls moves faster with each level
   updateHighScores(numarPeretiDistrusi);
 }
@@ -945,19 +945,19 @@ void displaySettingsMenu() {
 void navigateSettingsMenu() {
   backSelected = false;
   unsigned long lastNavTime = 0;
-      bool waitForRelease = true;
+  bool waitForRelease = true;
   const unsigned long navInterval = 400;
 
   while (!backSelected) {
     int yRead = analogRead(yPin);
     unsigned long currentMillis = millis();
     if (waitForRelease) {
-            if (digitalRead(swPin) == HIGH) {
-                waitForRelease = false;
-            } else {
-                continue; 
-            }
-        }
+      if (digitalRead(swPin) == HIGH) {
+        waitForRelease = false;
+      } else {
+        continue;
+      }
+    }
 
 
     if (currentMillis - lastNavTime > navInterval) {
@@ -984,8 +984,8 @@ void navigateSettingsMenu() {
     }
 
     if (backSelected) {
-      backSelected=false;
-  
+      backSelected = false;
+
       break;
     }
   }
