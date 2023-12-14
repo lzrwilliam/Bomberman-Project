@@ -48,7 +48,7 @@ Let's dive more into the details of the gameplay and other menu functionalities.
   - **Reset Highscores**: Clears all high scores from existing players.
   - **Back**: Return to the primary menu options.
 
-    **I noticed the following bug: if we enter in the settings menu and exit from it, second time we want to enter in it, we cannot**.
+    **I noticed the following bug: if we want to exit or enter the settings menu (the second time), we cannot. Also, sometimes the SwPin of joystick presses himself!**.
 </details>
 
 <details>
@@ -65,13 +65,11 @@ Let's dive more into the details of the gameplay and other menu functionalities.
   - **LCD 16x2**: The interface for all in-game messages, settings adjustments, and gameplay interactions.
 </details>
 
-The functionality of the project can be seen in the following videos:
-[Part1](https://www.youtube.com/watch?v=FSDpvKRa8Io)
-[Part2](https://www.youtube.com/watch?v=4oR_PaptcEU)
-[Part3](https://www.youtube.com/watch?v=Bqj9n7G40Pg)
+The functionality of the project can be seen in the following video:
+[Project Video](https://www.youtube.com/watch?v=hVTK0uVyZXE)
 
 Picture of the hardware setup:
 
-![WhatsApp Image 2023-12-08 at 03 41 09](https://github.com/lzrwilliam/Bomberman-Project/assets/92024459/b7f6088c-54db-4d67-8276-8ee2ec5fff4e)
+![WhatsApp Image 2023-12-14 at 14 13 05](https://github.com/lzrwilliam/Bomberman-Project/assets/92024459/a2a346a5-1de7-4c02-b622-70731eb604c9)
 
 
