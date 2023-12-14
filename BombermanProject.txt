@@ -34,7 +34,7 @@ const char playMessage13[] PROGMEM = "At the end of the game, you will be inform
 const char playMessage14[] PROGMEM = "If you want to exit the game, you can press the button on the breadbord.";
 const char playMessage15[] PROGMEM = "In order to change settings, after you made the change, press the button on breadbord and the changes will be saved.";
 const char playMessage16[] PROGMEM = "Also, if you want to exit a main menu selection or set name selection, without any change, press also the same button.";
-const char playMessage17[] PROGMEM = "Not to forget about, there are arrows to left and right on the LCD screen, that indicates the directions possible to navigate in the menu.";
+const char playMessage17[] PROGMEM = "Not to forget about, there are two arrows, Up and Down on the LCD screen, that indicates the directions possible to navigate in the menu.";
 const char playMessage18[] PROGMEM = "Enjoy!";
 
 
