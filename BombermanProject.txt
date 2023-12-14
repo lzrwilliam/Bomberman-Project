@@ -1063,7 +1063,7 @@ void enterName() {
         isButtonPressed = true;
         buttonPressStartTime = currentMillis;
         lastButtonPress = currentMillis;
-      } else if (currentMillis - buttonPressStartTime > 4000) {
+      } else if (currentMillis - buttonPressStartTime > 500) {
         // if joystick button pressed more than 4 seconds, select the player and exit the entername function
         updatePlayerName();
         break;
@@ -1189,7 +1189,7 @@ void navigatePlayerSelection() {
       buttonPressStartTime = currentMillis;
     }
     if (joystickButtonState == HIGH && isButtonPressed) {
-      if (currentMillis - buttonPressStartTime > 3000) {
+      if (currentMillis - buttonPressStartTime > 300) {
         if (numPlayers > 0) {
 
           selectedPlayerIndex = currentPlayerIndex;
