@@ -827,6 +827,7 @@ void resetGame() {
   wallMoveInterval = initialWallMoveInterval;
   timeLeft = 0;
   levelStartTime = millis();
+  levelTime=300000;
   timeLeft = levelTime;
 }
 void moveDestructibleWalls() {
