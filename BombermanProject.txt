@@ -790,7 +790,7 @@ void advanceToNextLevel() {
   initializeWalls();
   spawnPlayer();
   bombDelay = max(400, min(1000, bombDelay - 100));     // by each level bomb explodes faster
-  wallMoveInterval = max(500, wallMoveInterval - 250);  // walls moves faster with each level
+  wallMoveInterval = max(500, min(wallMoveInterval - 250),2000);  // walls moves faster with each level
   updateHighScores(numarPeretiDistrusi);
 }
 void onTimeExpired() {
@@ -983,12 +983,14 @@ void navigateSettingsMenu() {
       lastNavTime = currentMillis;
     }
 
-    if (backSelected) {
-      backSelected = false;
+    // if (backSelected) {
+    //   backSelected = false;
 
-      break;
-    }
+    //   break;
+    // }
   }
+        backSelected = false;
+
 
 
   displayMenu();
@@ -1073,7 +1075,7 @@ void enterName() {
         buttonPressStartTime = currentMillis;
         lastButtonPress = currentMillis;
       } else if (currentMillis - buttonPressStartTime > 500) {
-        // if joystick button pressed more than 4 seconds, select the player and exit the entername function
+        // if joystick button pressed more than half sec, select the player and exit the entername function
         updatePlayerName();
         break;
       }
