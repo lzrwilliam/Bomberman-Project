@@ -790,7 +790,7 @@ void advanceToNextLevel() {
   initializeWalls();
   spawnPlayer();
   bombDelay = max(400, min(1000, bombDelay - 100));     // by each level bomb explodes faster
-  wallMoveInterval = max(500, min(wallMoveInterval - 250),2000);  // walls moves faster with each level
+  wallMoveInterval = max(500, min(wallMoveInterval - 250,2000));  // walls moves faster with each level
   updateHighScores(numarPeretiDistrusi);
 }
 void onTimeExpired() {
